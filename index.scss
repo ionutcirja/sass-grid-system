@@ -1,0 +1,38 @@
+@import './variables';
+@import './mixins';
+
+.row {
+  @include row($space);
+}
+
+[class*='col-'] {
+  @include column($space);
+}
+
+@include makeColumns($class-xxsmall-column, $colums-num);
+@include makeOffsets($class-xxsmall-offset, $colums-num);
+
+@include respond-to('xxsmall') {
+  @include makeColumns($class-xsmall-column, $colums-num);
+  @include makeOffsets($class-xsmall-offset, $colums-num);
+}
+
+@include respond-to('xsmall') {
+  @include makeColumns($class-small-column, $colums-num);
+  @include makeOffsets($class-small-offset, $colums-num);
+}
+
+@include respond-to('small') {
+  @include makeColumns($class-medium-column, $colums-num);
+  @include makeOffsets($class-medium-offset, $colums-num);
+}
+
+@include respond-to('medium') {
+  @include makeColumns($class-large-column, $colums-num);
+  @include makeOffsets($class-large-offset, $colums-num);
+}
+
+@include respond-to('large') {
+  @include makeColumns($class-xlarge-column, $colums-num);
+  @include makeOffsets($class-xlarge-offset, $colums-num);
+}

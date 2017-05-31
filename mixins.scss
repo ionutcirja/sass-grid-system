@@ -1,0 +1,46 @@
+@import './variables';
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin row($margin: 0) {
+  font-size: 0;
+  margin-left: -$margin;
+  margin-right: -$margin;
+}
+
+@mixin column($gap: 0, $align: top) {
+  display: inline-block;
+  padding-left: $gap;
+  padding-right: $gap;
+  vertical-align: $align;
+}
+
+@mixin setColumnSize($col, $sum) {
+  width: percentage($col / $sum);
+}
+
+@mixin offset($colNum, $sum) {
+  margin-left: percentage($colNum / $sum);
+}
+
+@mixin makeColumns($size-class, $colums-num: 12) {
+  @for $i from 0 through $colums-num {
+    .#{$size-class}-#{$i} {
+      @include setColumnSize($i, $colums-num);
+    }
+  }
+}
+
+@mixin makeOffsets($size-class, $colums-num: 12) {
+  @for $i from 0 through $colums-num {
+    .#{$size-class}-#{$i} {
+      @include offset($i, $colums-num);
+    }
+  }
+}

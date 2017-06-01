@@ -1,38 +1,36 @@
 @import './variables';
 @import './mixins';
 
+@include set-breakpoints($breakpointsList);
+@include set-columns-num($columns-num);
+
 .row {
-  @include row($space);
+  @include row($row-margin);
 }
 
 [class*='col-'] {
-  @include column($space);
+  @include column($column-gap);
 }
 
-@include makeColumns($class-xxsmall-column, $colums-num);
-@include makeOffsets($class-xxsmall-offset, $colums-num);
-
-@include respond-to('xxsmall') {
-  @include makeColumns($class-xsmall-column, $colums-num);
-  @include makeOffsets($class-xsmall-offset, $colums-num);
-}
+@include makeColumns($class-xsmall-column);
+@include makeOffsets($class-xsmall-offset);
 
 @include respond-to('xsmall') {
-  @include makeColumns($class-small-column, $colums-num);
-  @include makeOffsets($class-small-offset, $colums-num);
+  @include makeColumns($class-small-column);
+  @include makeOffsets($class-small-offset);
 }
 
 @include respond-to('small') {
-  @include makeColumns($class-medium-column, $colums-num);
-  @include makeOffsets($class-medium-offset, $colums-num);
+  @include makeColumns($class-medium-column);
+  @include makeOffsets($class-medium-offset);
 }
 
 @include respond-to('medium') {
-  @include makeColumns($class-large-column, $colums-num);
-  @include makeOffsets($class-large-offset, $colums-num);
+  @include makeColumns($class-large-column);
+  @include makeOffsets($class-large-offset);
 }
 
 @include respond-to('large') {
-  @include makeColumns($class-xlarge-column, $colums-num);
-  @include makeOffsets($class-xlarge-offset, $colums-num);
+  @include makeColumns($class-xlarge-column);
+  @include makeOffsets($class-xlarge-offset);
 }

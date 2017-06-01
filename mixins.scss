@@ -1,8 +1,20 @@
-@import './variables';
+$breakpointsList: (
+  'xxsmall': 480px,
+  'xsmall': 640px,
+  'small':  840px,
+  'medium': 1024px,
+  'large':  1200px,
+  'xlarge':  1600px,
+  'xxlarge':  1920px
+) !default;
+
+@mixin set-breakpoints($list) {
+  $breakpointsList: $list;
+}
 
 @mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
+  @if map-has-key($breakpointsList, $breakpoint) {
+    @media (min-width: map-get($breakpointsList, $breakpoint)) {
       @content;
     }
   }

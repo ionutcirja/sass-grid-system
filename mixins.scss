@@ -8,8 +8,14 @@ $breakpointsList: (
   'xxlarge':  1920px
 ) !default;
 
+$columns-num: 12 !default;
+
 @mixin set-breakpoints($list) {
   $breakpointsList: $list;
+}
+
+@mixin set-columns-num($num) {
+  $columns-num: $num;
 }
 
 @mixin respond-to($breakpoint) {
@@ -41,18 +47,18 @@ $breakpointsList: (
   margin-left: percentage($colNum / $sum);
 }
 
-@mixin makeColumns($size-class, $colums-num: 12) {
-  @for $i from 0 through $colums-num {
+@mixin makeColumns($size-class) {
+  @for $i from 0 through $columns-num {
     .#{$size-class}-#{$i} {
-      @include setColumnSize($i, $colums-num);
+      @include setColumnSize($i, $columns-num);
     }
   }
 }
 
-@mixin makeOffsets($size-class, $colums-num: 12) {
-  @for $i from 0 through $colums-num {
+@mixin makeOffsets($size-class) {
+  @for $i from 0 through $columns-num {
     .#{$size-class}-#{$i} {
-      @include offset($i, $colums-num);
+      @include offset($i, $columns-num);
     }
   }
 }
